@@ -1,5 +1,7 @@
 import { Tabs } from 'expo-router';
-import { Hop as Home, ShoppingBag, MessageCircle, User } from 'lucide-react-native';
+import { Hop as  ShoppingBag, MessageCircle, User } from 'lucide-react-native';
+import Feather from '@expo/vector-icons/Feather';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { useAuth } from '@/contexts/AuthContext';
 
 export default function TabLayout() {
@@ -22,7 +24,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ size, color }) => (
-            <Home size={size} color={color} />
+            <Feather name="home" size={size} color="black" />
           ),
         }}
       />
@@ -32,7 +34,7 @@ export default function TabLayout() {
           options={{
             title: 'My Products',
             tabBarIcon: ({ size, color }) => (
-              <ShoppingBag size={size} color={color} />
+              <Ionicons name="bag-handle-outline" size={24} color="black" />
             ),
           }}
         />

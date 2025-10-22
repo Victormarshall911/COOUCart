@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, ActivityIndicator, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, ActivityIndicator, RefreshControl, TextInput, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import { supabase, Database } from '@/lib/supabase';
 import { useAuth } from '@/contexts/AuthContext';
@@ -17,18 +17,24 @@ export default function HomeScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const { profile } = useAuth();
   const router = useRouter();
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     loadProducts();
-  }, []);
+  }, [search]);
 
   async function loadProducts() {
     try {
-      const { data, error } = await supabase
+      let query = supabase
         .from('products')
         .select('*, profiles(full_name)')
         .order('created_at', { ascending: false });
 
+      if (search.trim()) {
+        query = query.ilike('title', `%${search.trim()}%`);
+      }
+
+      const { data, error } = await query;
       if (error) throw error;
       setProducts(data || []);
     } catch (error) {
@@ -84,6 +90,13 @@ export default function HomeScreen() {
   function renderProduct({ item }: { item: Product }) {
     return (
       <TouchableOpacity style={styles.productCard} onPress={() => router.push(`/product/${item.id}`)}>
+        {item.image_url ? (
+          <Image source={{ uri: item.image_url }} style={styles.productImage} />
+        ) : (
+          <View style={[styles.productImage, styles.placeholderImage]}>
+            <Text style={styles.placeholderText}>No Image</Text>
+          </View>
+        )}
         <View style={styles.productInfo}>
           <Text style={styles.productTitle} numberOfLines={1}>{item.title}</Text>
           <Text style={styles.productPrice}>{formatNaira(item.price)}</Text>
@@ -107,6 +120,13 @@ export default function HomeScreen() {
         <Text style={styles.headerSubtitle}>
           {profile?.role === 'business' ? 'Browse all products' : 'Find what you need'}
         </Text>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search products..."
+          value={search}
+          onChangeText={setSearch}
+          returnKeyType="search"
+        />
       </View>
 
       {products.length === 0 ? (
@@ -159,6 +179,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#666',
   },
+  searchInput: {
+    backgroundColor: '#f5f5f5',
+    padding: 12,
+    borderRadius: 10,
+    fontSize: 16,
+    marginTop: 12,
+    marginBottom: 8,
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
+  },
   centered: {
     flex: 1,
     justifyContent: 'center',
@@ -171,12 +201,25 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 16,
     marginBottom: 16,
-    padding: 16,
+    overflow: 'hidden',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 3,
+  },
+  productImage: {
+    width: '100%',
+    height: 200,
+    backgroundColor: '#f0f0f0',
+  },
+  placeholderImage: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  placeholderText: {
+    color: '#999',
+    fontSize: 16,
   },
   productInfo: {
     padding: 16,
