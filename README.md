@@ -122,12 +122,12 @@ We welcome contributions to COOUCart Marketplace! If you have suggestions or wan
 ## 🧑‍💻 Author
 
 **Victor Marshall**
-*   LinkedIn: [https://linkedin.com/in/victormarshall](https://linkedin.com/in/victormarshall)
-*   Twitter: [https://twitter.com/victormarshall](https://twitter.com/victormarshall)
+*   LinkedIn: [https://www.linkedin.com/in/marshall-victor-501460213/](https://www.linkedin.com/in/marshall-victor-501460213/)
+*   Twitter: [https://x.com/marshallvicto18](https://x.com/marshallvicto18)
 
 ## 🛡️ License
 
-This project is licensed under the MIT License.
+This project was developed and uploaded by Victor Marshall.
 
 ## 📊 Badges
 
