@@ -301,7 +301,7 @@ export default function ChatScreen() {
   if (loading) {
     return (
       <View style={styles.centered}>
-        <ActivityIndicator size="large" color="#007AFF" />
+        <ActivityIndicator size="large" color="#6a6a6a" />
       </View>
     );
   }
@@ -319,7 +319,7 @@ export default function ChatScreen() {
     >
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-          <ArrowLeft size={24} color="#1a1a1a" />
+          <ArrowLeft size={24} color="#4a4a4a" />
         </TouchableOpacity>
         <View style={styles.headerInfo}>
           <Text style={styles.headerTitle} numberOfLines={1}>
@@ -444,7 +444,7 @@ export default function ChatScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: '#f5f5f5',
   },
   header: {
     flexDirection: 'row',
@@ -452,9 +452,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 60,
     paddingBottom: 16,
-    backgroundColor: '#fff',
+    backgroundColor: '#fafafa',
     borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
+    borderBottomColor: '#e8e8e8',
   },
   backButton: {
     padding: 8,
@@ -466,15 +466,15 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#1a1a1a',
+    color: '#4a4a4a',
   },
   headerSubtitle: {
     fontSize: 14,
-    color: '#007AFF',
+    color: '#6a6a6a',
     fontWeight: '600',
   },
   completeButton: {
-    backgroundColor: '#34C759',
+    backgroundColor: '#6a6a6a',
     width: 40,
     height: 40,
     borderRadius: 20,
@@ -483,12 +483,12 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   closedBanner: {
-    backgroundColor: '#ffebee',
+    backgroundColor: '#e8e8e8',
     padding: 12,
     alignItems: 'center',
   },
   closedText: {
-    color: '#ff3b30',
+    color: '#6a6a6a',
     fontSize: 14,
     fontWeight: '600',
   },
@@ -508,15 +508,15 @@ const styles = StyleSheet.create({
   },
   ownMessage: {
     alignSelf: 'flex-end',
-    backgroundColor: '#007AFF',
+    backgroundColor: '#6a6a6a',
   },
   otherMessage: {
     alignSelf: 'flex-start',
-    backgroundColor: '#fff',
+    backgroundColor: '#fafafa',
   },
   messageSender: {
     fontSize: 12,
-    color: '#666',
+    color: '#6a6a6a',
     marginBottom: 4,
     fontWeight: '600',
   },
@@ -528,23 +528,23 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   otherMessageText: {
-    color: '#1a1a1a',
+    color: '#4a4a4a',
   },
   messageTime: {
     fontSize: 11,
-    color: '#999',
+    color: '#8a8a8a',
   },
   inputContainer: {
     flexDirection: 'row',
     padding: 16,
-    backgroundColor: '#fff',
+    backgroundColor: '#fafafa',
     borderTopWidth: 1,
-    borderTopColor: '#e0e0e0',
+    borderTopColor: '#e8e8e8',
     alignItems: 'flex-end',
   },
   input: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#f0f0f0',
     borderRadius: 20,
     paddingHorizontal: 16,
     paddingVertical: 10,
@@ -553,7 +553,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   sendButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#6a6a6a',
     width: 40,
     height: 40,
     borderRadius: 20,
@@ -564,15 +564,15 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   ratingCard: {
-    backgroundColor: '#fff',
+    backgroundColor: '#fafafa',
     borderTopWidth: 1,
-    borderTopColor: '#e0e0e0',
+    borderTopColor: '#e8e8e8',
     padding: 16,
   },
   ratingTitle: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#1a1a1a',
+    color: '#4a4a4a',
     marginBottom: 8,
   },
   starsRow: {
@@ -581,7 +581,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   ratingInput: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#f0f0f0',
     borderRadius: 12,
     padding: 12,
     minHeight: 60,
@@ -589,7 +589,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   submitRatingButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#6a6a6a',
     paddingVertical: 12,
     borderRadius: 12,
     alignItems: 'center',
@@ -611,7 +611,7 @@ const styles = StyleSheet.create({
   },
   ratingCommentText: {
     fontSize: 14,
-    color: '#444',
+    color: '#5a5a5a',
     marginTop: 8,
   },
 });
