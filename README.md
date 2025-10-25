@@ -116,7 +116,7 @@ We welcome contributions to make COOUCart even better! If you're interested in c
     -   LinkedIn: ['https://www.linkedin.com/in/marshall-victor-501460213/']
     -   X: ['https://x.com/marshallvicto18']
     -   Portfolio: ['https://victormarshall911.github.io/Cv/']
-[![Facebook](https://web.facebook.com/profile.php?id=61576767331802)]
+    -   Facebook: ['https://web.facebook.com/profile.php?id=61576767331802']
 
 ---
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)

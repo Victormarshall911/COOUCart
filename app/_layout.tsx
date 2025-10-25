@@ -96,13 +96,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff8e1', // soft yellow background
+    backgroundColor: '#fff8e1', 
   },
   logoWrapper: {
     width: 180,
     height: 180,
     borderRadius: 90,
-    backgroundColor: '#ffeb3b', // bright yellow
+    backgroundColor: '#d6c529ff', 
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000',
