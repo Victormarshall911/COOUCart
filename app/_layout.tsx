@@ -1,9 +1,47 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useFrameworkReady } from '@/hooks/useFrameworkReady';
 import { AuthProvider, useAuth } from '@/contexts/AuthContext';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, Image, Text } from 'react-native';
+import { Animated, Easing } from 'react-native';
+
+function AnimatedLogo() {
+  const scale = useRef(new Animated.Value(0.9)).current;
+
+  useEffect(() => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(scale, {
+          toValue: 1.1,
+          duration: 1000,
+          easing: Easing.ease,
+          useNativeDriver: true,
+        }),
+        Animated.timing(scale, {
+          toValue: 0.9,
+          duration: 1000,
+          easing: Easing.ease,
+          useNativeDriver: true,
+        }),
+      ])
+    ).start();
+  }, [scale]);
+
+  return (
+    <View style={styles.logoContainer}>
+      <View style={styles.logoWrapper}>
+        <Animated.Image
+          source={require('../assets/images/V.png')}
+          style={[styles.logo, { transform: [{ scale }] }]}
+          resizeMode="contain"
+        />
+      </View>
+      <Text style={styles.appName}>COOUCart</Text>
+    </View>
+  );
+}
+
 
 function RootLayoutNav() {
   const { session, loading } = useAuth();
@@ -25,7 +63,7 @@ function RootLayoutNav() {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#007AFF" />
+        <AnimatedLogo />
       </View>
     );
   }
@@ -58,6 +96,37 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#fff8e1', // soft yellow background
   },
+  logoWrapper: {
+    width: 180,
+    height: 180,
+    borderRadius: 90,
+    backgroundColor: '#ffeb3b', // bright yellow
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    elevation: 6,
+  },
+  logo: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+  },
+
+  logoContainer: {
+    alignItems: 'center',
+  },
+
+  appName: {
+    marginTop: 24,
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#1a1a1a',
+    letterSpacing: 1,
+  },
+
 });
+

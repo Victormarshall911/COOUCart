@@ -309,7 +309,9 @@ export default function ChatScreen() {
   const isBusiness = profile?.id === chat?.business_id;
   const canComplete = isBusiness && chat?.status === 'open';
 
-  const formatNaira = (value: number) => new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', maximumFractionDigits: 0 }).format(value);
+  const formatNaira = (value: number) =>
+  `₦${value.toLocaleString('en-NG', { maximumFractionDigits: 0 })}`;
+
 
   return (
     <KeyboardAvoidingView

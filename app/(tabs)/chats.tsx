@@ -59,6 +59,12 @@ export default function ChatsScreen() {
     const otherPerson = isBusiness ? item.buyer_profile : item.business_profile;
     const statusColor = item.status === 'open' ? '#34C759' : '#999';
 
+    const formatNaira = (value: number) => {
+  if (isNaN(value)) return '₦0';
+  return `₦${value.toLocaleString('en-NG', { maximumFractionDigits: 0 })}`;
+};
+
+
     return (
       <TouchableOpacity
         style={styles.chatCard}
@@ -75,7 +81,7 @@ export default function ChatsScreen() {
             {isBusiness ? 'Buyer' : 'Seller'}: {otherPerson?.full_name || 'Unknown'}
           </Text>
           <Text style={styles.chatPrice}>
-            ${item.products?.price || '0'}
+  {         formatNaira(item.products?.price || 0)}
           </Text>
         </View>
         <View style={[styles.statusBadge, { backgroundColor: statusColor }]}>
