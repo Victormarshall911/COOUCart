@@ -51,6 +51,7 @@ export type Database = {
           price: number;
           image_url: string | null;
           owner_id: string;
+          category_id: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -60,12 +61,27 @@ export type Database = {
           price: number;
           image_url?: string | null;
           owner_id: string;
+          category_id?: string | null;
         };
         Update: {
           title?: string;
           description?: string | null;
           price?: number;
           image_url?: string | null;
+          category_id?: string | null;
+        };
+      };
+      categories: {
+        Row: {
+          id: string;
+          name: string;
+          created_at: string;
+        };
+        Insert: {
+          name: string;
+        };
+        Update: {
+          name?: string;
         };
       };
       chats: {
@@ -100,6 +116,73 @@ export type Database = {
           chat_id: string;
           sender_id: string;
           content: string;
+        };
+      };
+      wallets: {
+        Row: {
+          id: string;
+          user_id: string;
+          balance: number;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          user_id: string;
+          balance?: number;
+        };
+        Update: {
+          balance?: number;
+        };
+      };
+      transactions: {
+        Row: {
+          id: string;
+          wallet_id: string;
+          type: 'deposit' | 'withdrawal' | 'payment' | 'refund';
+          amount: number;
+          status: 'pending' | 'completed' | 'failed' | 'cancelled';
+          description: string | null;
+          reference: string | null;
+          metadata: any | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          wallet_id: string;
+          type: 'deposit' | 'withdrawal' | 'payment' | 'refund';
+          amount: number;
+          status?: 'pending' | 'completed' | 'failed' | 'cancelled';
+          description?: string | null;
+          reference?: string | null;
+          metadata?: any | null;
+        };
+        Update: {
+          status?: 'pending' | 'completed' | 'failed' | 'cancelled';
+          description?: string | null;
+          metadata?: any | null;
+        };
+      };
+      orders: {
+        Row: {
+          id: string;
+          buyer_id: string;
+          product_id: string;
+          amount: number;
+          status: 'pending' | 'paid' | 'shipped' | 'delivered' | 'cancelled';
+          payment_transaction_id: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          buyer_id: string;
+          product_id: string;
+          amount: number;
+          status?: 'pending' | 'paid' | 'shipped' | 'delivered' | 'cancelled';
+          payment_transaction_id?: string | null;
+        };
+        Update: {
+          status?: 'pending' | 'paid' | 'shipped' | 'delivered' | 'cancelled';
+          payment_transaction_id?: string | null;
         };
       };
     };

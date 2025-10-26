@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Hop as  ShoppingBag, MessageCircle, User } from 'lucide-react-native';
+import { Hop as  ShoppingBag, MessageCircle, User, Wallet, Package } from 'lucide-react-native';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useAuth } from '@/contexts/AuthContext';
@@ -35,6 +35,26 @@ export default function TabLayout() {
             title: 'My Products',
             tabBarIcon: ({ size, color }) => (
               <Ionicons name="bag-handle-outline" size={24} color="black" />
+            ),
+          }}
+        />
+      )}
+      <Tabs.Screen
+        name="wallet"
+        options={{
+          title: 'Wallet',
+          tabBarIcon: ({ size, color }) => (
+            <Wallet size={size} color={color} />
+          ),
+        }}
+      />
+      {!isBusiness && (
+        <Tabs.Screen
+          name="orders"
+          options={{
+            title: 'Orders',
+            tabBarIcon: ({ size, color }) => (
+              <Package size={size} color={color} />
             ),
           }}
         />
