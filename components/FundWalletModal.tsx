@@ -24,7 +24,7 @@ export default function FundWalletModal({ visible, onClose }: { visible: boolean
   const [showPaystackModal, setShowPaystackModal] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<'bank' | 'card'>('card');
 
-  // Generate virtual account details
+
   useEffect(() => {
     if (visible && !bankDetails) {
       generateVirtualAccount();
@@ -107,7 +107,7 @@ export default function FundWalletModal({ visible, onClose }: { visible: boolean
         </View>
 
         <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-          {/* Amount Input */}
+          {/* Amount Inputs */}
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Enter Amount (₦)</Text>
             <TextInput
